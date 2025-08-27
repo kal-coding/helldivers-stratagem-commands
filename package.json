@@ -1,0 +1,48 @@
+{
+  "name": "helldivers-stratagem-commands",
+  "displayName": "helldivers-stratagem-commands",
+  "description": "execute custom commands with helldivers stratagems for maximum democracy",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+    { "command": "helldivers.up", "title": "Helldivers Up" },
+    { "command": "helldivers.down", "title": "Helldivers Down" },
+    { "command": "helldivers.left", "title": "Helldivers Left" },
+    { "command": "helldivers.right", "title": "Helldivers Right" }
+  ],
+  "keybindings": [
+    { "command": "helldivers.up", "key": "up", "when": "editorTextFocus" },
+    { "command": "helldivers.down", "key": "down", "when": "editorTextFocus" },
+    { "command": "helldivers.left", "key": "left", "when": "editorTextFocus" },
+    { "command": "helldivers.right", "key": "right", "when": "editorTextFocus" }
+  ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "compile": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "pretest": "npm run compile && npm run lint"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.103.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.9",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2"
+  }
+}
