@@ -1,17 +1,19 @@
 import * as vscode from "vscode";
 
 const stratagems: Record<string, { name: string; action: () => void }> = {
-  UDLR: {
+  "↑↑↑↑": {
     name: "Orbital Strike",
-    action: () =>
-      vscode.window.showInformationMessage("💥 Orbital Strike Deployed!"),
+    action: () => {
+      vscode.window.showInformationMessage("💥 Orbital Strike Deployed!");
+      vscode.commands.executeCommand("editor.action.commentLine");
+    },
   },
-  RRLL: {
+  "↓↓↓↓": {
     name: "Supply Drop",
     action: () =>
       vscode.commands.executeCommand("workbench.action.terminal.new"),
   },
-  UUDD: {
+  "↑↑↓↓": {
     name: "Shield Online",
     action: () => vscode.commands.executeCommand("editor.action.commentLine"),
   },
@@ -25,7 +27,7 @@ function registerStratagemCommand(
   direction: string
 ) {
   return vscode.commands.registerCommand(`helldivers.${direction}`, () => {
-    currentInput.push(direction[0].toUpperCase()); // U, D, L, R
+    currentInput.push(direction); // U, D, L, R
     if (currentInput.length > 4) {
       currentInput.shift();
     }
@@ -53,10 +55,10 @@ export function activate(context: vscode.ExtensionContext) {
   statusBar.show();
   context.subscriptions.push(statusBar);
 
-  context.subscriptions.push(registerStratagemCommand(context, "up"));
-  context.subscriptions.push(registerStratagemCommand(context, "down"));
-  context.subscriptions.push(registerStratagemCommand(context, "left"));
-  context.subscriptions.push(registerStratagemCommand(context, "right"));
+  context.subscriptions.push(registerStratagemCommand(context, "↑"));
+  context.subscriptions.push(registerStratagemCommand(context, "↓"));
+  context.subscriptions.push(registerStratagemCommand(context, "←"));
+  context.subscriptions.push(registerStratagemCommand(context, "→"));
 }
 
 export function deactivate() {

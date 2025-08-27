@@ -13,16 +13,16 @@
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-    { "command": "helldivers.up", "title": "Helldivers Up" },
-    { "command": "helldivers.down", "title": "Helldivers Down" },
-    { "command": "helldivers.left", "title": "Helldivers Left" },
-    { "command": "helldivers.right", "title": "Helldivers Right" }
+    { "command": "helldivers.↑", "title": "Helldivers Up" },
+    { "command": "helldivers.↓", "title": "Helldivers Down" },
+    { "command": "helldivers.←", "title": "Helldivers Left" },
+    { "command": "helldivers.→", "title": "Helldivers Right" }
   ],
   "keybindings": [
-    { "command": "helldivers.up", "key": "up", "when": "editorTextFocus" },
-    { "command": "helldivers.down", "key": "down", "when": "editorTextFocus" },
-    { "command": "helldivers.left", "key": "left", "when": "editorTextFocus" },
-    { "command": "helldivers.right", "key": "right", "when": "editorTextFocus" }
+    { "command": "helldivers.↑", "key": "up", "when": "editorTextFocus" },
+    { "command": "helldivers.↓", "key": "down", "when": "editorTextFocus" },
+    { "command": "helldivers.←", "key": "left", "when": "editorTextFocus" },
+    { "command": "helldivers.→", "key": "right", "when": "editorTextFocus" }
   ]
   },
   "scripts": {
