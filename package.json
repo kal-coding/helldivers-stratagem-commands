@@ -13,17 +13,52 @@
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-    { "command": "helldivers.↑", "title": "Helldivers Up" },
-    { "command": "helldivers.↓", "title": "Helldivers Down" },
-    { "command": "helldivers.←", "title": "Helldivers Left" },
-    { "command": "helldivers.→", "title": "Helldivers Right" }
+    { "command": "helldivers.🡅", "title": "Helldivers Up" },
+    { "command": "helldivers.🡇", "title": "Helldivers Down" },
+    { "command": "helldivers.🡄", "title": "Helldivers Left" },
+    { "command": "helldivers.🡆", "title": "Helldivers Right" },
+    { "command": "helldivers.executeStratagem", "title": "Execute Stratagem", "icon": "$(play)" },
+    { "command": "helldivers.refreshStratagems", "title": "Refresh", "icon": "$(refresh)" }
   ],
   "keybindings": [
-    { "command": "helldivers.↑", "key": "up", "when": "editorTextFocus" },
-    { "command": "helldivers.↓", "key": "down", "when": "editorTextFocus" },
-    { "command": "helldivers.←", "key": "left", "when": "editorTextFocus" },
-    { "command": "helldivers.→", "key": "right", "when": "editorTextFocus" }
-  ]
+    { "command": "helldivers.🡅", "key": "up", "when": "editorTextFocus" },
+    { "command": "helldivers.🡇", "key": "down", "when": "editorTextFocus" },
+    { "command": "helldivers.🡄", "key": "left", "when": "editorTextFocus" },
+    { "command": "helldivers.🡆", "key": "right", "when": "editorTextFocus" }
+  ],
+  "viewsContainers": {
+    "panel": [
+      {
+        "id": "helldivers",
+        "title": "Helldivers Stratagems",
+        "icon": "$(rocket)"
+      }
+    ]
+  },
+  "views": {
+    "helldivers": [
+      {
+        "id": "helldivers.stratagems",
+        "name": "Available Stratagems"
+      }
+    ]
+  },
+  "menus": {
+    "view/title": [
+      {
+        "command": "helldivers.refreshStratagems",
+        "when": "view == helldivers.stratagems",
+        "group": "navigation"
+      }
+    ],
+    "view/item/context": [
+      {
+        "command": "helldivers.executeStratagem",
+        "when": "view == helldivers.stratagems && viewItem == stratagem",
+        "group": "inline"
+      }
+    ]
+  }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
